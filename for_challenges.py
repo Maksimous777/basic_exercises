@@ -26,13 +26,16 @@ is_male = {
     'Вася': True,
     'Маша': False,
 }
-names = ['Оля', 'Петя', 'Вася', 'Маша']
+names = ['Оля', 'Петя', 'Вася', 'Маша', 'Максим']
 print('\nЗадание 3')
 for name in names:
-    if is_male[name]:
-        print(f'{name}: Мужской')
-    else:
-        print(f'{name}: Женский')
+    try:
+        if is_male[name]:
+            print(f'{name}: Мужской')
+        else:
+            print(f'{name}: Женский')
+    except KeyError:
+        print(f'Не знаю такого имени: {name}')
 
 
 # Задание 4
@@ -49,8 +52,8 @@ groups = [
 ]
 print('\nЗадание 4')
 print(f'Всего {len(groups)} группы')
-for group in range(len(groups)):
-    print(f'Группа {group + 1}: {len(groups[group])} ученика')
+for index, group in enumerate(groups, start=1):
+    print(f"Группа {index}: {len(group)} ученика")
 
 
 # Задание 5
@@ -65,4 +68,5 @@ groups = [
     ['Вася', 'Маша', 'Саша', 'Женя'],
 ]
 print('\nЗадание 5')
-[print(' '.join(group)) for group in groups]
+[print(f"Группа {index}: {', '.join(group)}")
+ for index, group in enumerate(groups, start=1)]
