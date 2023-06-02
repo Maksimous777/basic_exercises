@@ -15,9 +15,16 @@ students = [
 ]
 
 print('Задание 1')
-qty_students = (Counter(student['first_name'] for student in students))
-for student in qty_students:
-    print(f'{student}: {qty_students[student]}')
+# qty_students = (Counter(student['first_name'] for student in students))
+# for student in qty_students:
+#     print(f'{student}: {qty_students[student]}')
+# print()
+unique_students = []
+for student in students:
+    if student['first_name'] not in unique_students:
+        unique_students.append(student['first_name'])
+for student in unique_students:
+    print(f"{student}: {students.count({'first_name': student})}")
 print()
 
 
@@ -134,9 +141,11 @@ for grade in range(len(school)):
         else:
             female[grade] += 1
 
-most_male = school[male.index(max(male))]['class']
-most_female = school[female.index(max(female))]['class']
+most_male_index = male.index(max(male))
+most_male_class = school[most_male_index]['class']
+most_female_index = female.index(max(female))
+most_female_class = school[most_female_index]['class']
 print(
-    f"Больше всего мальчиков в классе {most_male}")
+    f"Больше всего мальчиков в классе {most_male_class}")
 print(
-    f"Больше всего девочек в классе {most_female}")
+    f"Больше всего девочек в классе {most_female_class}")
