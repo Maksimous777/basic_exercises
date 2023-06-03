@@ -15,16 +15,16 @@ students = [
 ]
 
 print('Задание 1')
-# qty_students = (Counter(student['first_name'] for student in students))
-# for student in qty_students:
-#     print(f'{student}: {qty_students[student]}')
-# print()
-unique_students = []
+unique_students = {}
 for student in students:
-    if student['first_name'] not in unique_students:
-        unique_students.append(student['first_name'])
-for student in unique_students:
-    print(f"{student}: {students.count({'first_name': student})}")
+    student = student['first_name']
+    if unique_students.get(student):
+        unique_students[student] += 1
+    else:
+        unique_students[student] = 1
+
+for name, qty in unique_students.items():
+    print(f"{name}: {qty}")
 print()
 
 
